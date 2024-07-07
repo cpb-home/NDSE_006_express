@@ -58,13 +58,13 @@ app.put('/api/books/:id', (req, res) => {
 
   if (idx !== -1) {
     books[idx] = {
-      ...books[idx],
-      title,
-      description,
-      authors,
-      favorite,
-      fileCover,
-      fileName
+      id: books[idx].id,
+      title: title ? title : books[idx].title,
+      description: description ? description : books[idx].description,
+      authors: authors ? authors : books[idx].authors,
+      favorite: favorite ? favorite : books[idx].favorite,
+      fileCover: fileCover ? fileCover : books[idx].fileCover,
+      fileName: fileName ? fileName : books[idx].fileName,
     };
     res.json(books[idx]);
   } else {
