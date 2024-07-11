@@ -17,7 +17,16 @@ app.use(
   })
 )
 
-app.use('/public', express.static(__dirname+'/public'));
+app.use('/public', express.static(__dirname+'/public')); // запрос http://localhost:3000/api/books/public/books/картинка этот вариант из видео лекции
+/*
+app.use(express.static('/public'));                      // запрос http://localhost:3000/api/books/public/books/картинка
+app.use(express.static('./public'));                     // запрос http://localhost:3000/api/books/public/books/картинка
+app.use('/download', express.static(__dirname+'/public/book')); // запрос http://localhost:3000/api/books/download/картинка
+app.use('/public', express.static('/public'));           // запрос http://localhost:3000/api/books/public/books/картинка
+app.use('/download', express.static('/public'));         // запрос http://localhost:3000/api/books/download/картинка
+app.use('/download', express.static('./public'));        // запрос http://localhost:3000/api/books/download/картинка
+app.use('/', express.static('/'));                       // запрос http://localhost:3000/api/books/public/books/картинка
+*/
 app.use(mainUrl, indexRouter);
 app.use(mainUrl, bookFileRouter);
 app.use(error404);
