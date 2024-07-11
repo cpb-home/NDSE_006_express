@@ -1,6 +1,7 @@
 const express = require("express");
 const { v4: uuid } = require("uuid");
-
+const Book = require('./classes/Book');
+/*
 class Book {
   constructor(
     title = '',
@@ -20,7 +21,7 @@ class Book {
     this.fileName = typeof fileName === 'string' ? fileName : '';
   }
 }
-
+*/
 const database = {
   books: [],
   users: [
