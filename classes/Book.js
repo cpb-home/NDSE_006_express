@@ -8,6 +8,7 @@ class Book {
     favorite = '',
     fileCover = '',
     fileName = '',
+    fileBook = '',
     id = uuid()
   ) {
     this.id = id;
@@ -17,6 +18,7 @@ class Book {
     this.favorite = typeof favorite === 'string' ? favorite : '';
     this.fileCover = typeof fileCover === 'string' ? fileCover : '';
     this.fileName = typeof fileName === 'string' ? fileName : '';
+    this.fileBook = typeof fileName === 'string' ? fileName : '';
   }
 }
 

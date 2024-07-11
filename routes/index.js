@@ -22,9 +22,9 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const { books } = database;
-  const { title, description, authors, favorite, fileCover, fileName } = req.body;
+  const { title, description, authors, favorite, fileCover, fileName, fileBook } = req.body;
 
-  const newBook = new Book(title, description, authors, favorite, fileCover, fileName);
+  const newBook = new Book(title, description, authors, favorite, fileCover, fileName, fileBook);
   books.push(newBook);
 
   res.status(201);
@@ -44,7 +44,7 @@ router.post('/login', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const { books } = database;
-  const { title, description, authors, favorite, fileCover, fileName } = req.body;
+  const { title, description, authors, favorite, fileCover, fileName, fileBook } = req.body;
   const idx = books.findIndex(book => book.id === req.params.id);
 
   if (idx !== -1) {
@@ -56,6 +56,7 @@ router.put('/:id', (req, res) => {
       favorite: favorite ? favorite : books[idx].favorite,
       fileCover: fileCover ? fileCover : books[idx].fileCover,
       fileName: fileName ? fileName : books[idx].fileName,
+      fileBook: fileBook ? fileBook : books[idx].fileBook,
     };
     res.json(books[idx]);
   } else {
@@ -76,6 +77,5 @@ router.delete('/:id', (req, res) => {
     res.json('404: not found such id');
   }
 });
-
 
 module.exports = router;
