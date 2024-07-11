@@ -17,7 +17,7 @@ app.use(
   })
 )
 
-app.use(mainUrl, express.static(__dirname+'/public'));
+app.use('/public', express.static(__dirname+'/public'));
 app.use(mainUrl, indexRouter);
 app.use(mainUrl, bookFileRouter);
 app.use(error404);

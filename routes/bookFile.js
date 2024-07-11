@@ -3,7 +3,7 @@ const router = express.Router();
 const bookMulter = require('../middleware/book');
 const database = require('../db/index');
 
-router.post('/data/:id',
+router.post('/upload/:id',
   bookMulter.single('file'),
   (req, res) => {
     if (req.file) {
