@@ -25,23 +25,19 @@ router.post('/upload/:id',
 );
 
 router.get('/:id/download', (req, res) => {
-  const { id } = req.params;
   const { books } = database;
   const idx = books.findIndex(book => book.id === req.params.id);
 
   if (idx !== -1) {
-    console.log(__dirname+books[idx].fileBook);
-    books[idx].fileBook = books[idx].fileBook.replace(/\\/g, '/');
-    const dir = __dirname.split('/').pop().join();
-    console.log(dir+'/'+books[idx].fileBook);
-    res.download(dir+'/'+books[idx].fileBook);
-    //res.json(1);
+    const dirArr = __dirname.split('\\');
+    dirArr.pop();
+    const dir = dirArr.join('\\');
+    console.log(`dir ${dir}`);
+    res.download(dir+'\\'+books[idx].fileBook);
   } else {
     res.status(404);
     res.json('404: not found such id');
   }
 });
-
-//app.use(mainUrl+'/public', express.static(__dirname+'/public/books'));
 
 module.exports = router;
